@@ -20,6 +20,8 @@ public class Respuesta {
     @OneToOne
     private Solicitud solicitud;
 
-
+    @ManyToOne
+    @JoinColumn(name = "id_empleado", nullable = false)
+    private Empleado empleado;
 
 }

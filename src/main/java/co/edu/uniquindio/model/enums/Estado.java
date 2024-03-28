@@ -5,7 +5,6 @@ public enum Estado {
     ENPROCESO("En proceso"),
     APROBADO("Aprobado"),
     RECHAZADO("Rechazado");
-    // No Fokiu
 
     private String estado;
 

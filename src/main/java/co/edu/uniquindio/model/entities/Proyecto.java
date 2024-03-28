@@ -39,5 +39,8 @@ public class Proyecto {
     @OneToMany(mappedBy = "proyecto")
     private List<Documento> listaDocumentos;
 
+    @ManyToOne
+    @JoinColumn(name = "id_empleado", nullable = false)
+    private Empleado empleado;
 
 }
