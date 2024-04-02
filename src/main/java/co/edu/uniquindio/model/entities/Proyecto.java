@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,9 +14,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Proyecto {
+public class Proyecto implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProyecto;
 
     @Column(nullable = false)

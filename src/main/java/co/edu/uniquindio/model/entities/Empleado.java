@@ -27,9 +27,9 @@ public class Empleado implements Serializable {
 
     private Cargo cargo;
 
-    @OneToMany(mappedBy = "id_empleado")
+    @OneToMany(mappedBy = "empleado")
     private List<Respuesta> respuestas;
 
-    @OneToMany(mappedBy = "id_empleado")
+    @OneToMany(mappedBy = "empleado")
     private List<Proyecto> proyectos;
 }

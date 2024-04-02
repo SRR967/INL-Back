@@ -6,16 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Solicitud {
+public class Solicitud implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_solicitud;
 
     @Column(nullable = false)
@@ -34,7 +35,7 @@ public class Solicitud {
     private Proyecto proyecto;
 
     @OneToOne(mappedBy = "solicitud")
-    private Solicitud solicitud;
+    private Respuesta respuesta;
 
     private Estado estadoSolicitud;
 }

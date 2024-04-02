@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Cliente extends Usuario implements Serializable {
 
-    @Id
+
     @Column(nullable = false, length = 10, updatable = false)
     private String cedula;
 
