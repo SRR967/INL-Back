@@ -15,9 +15,6 @@ import java.util.List;
 public class Cliente extends Usuario implements Serializable {
 
 
-    @Column(nullable = false, length = 10, updatable = false)
-    private String cedula;
-
     @Column(nullable = false, length =50)
     private String nombre;
 

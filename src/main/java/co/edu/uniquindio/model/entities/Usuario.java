@@ -18,9 +18,9 @@ import java.io.Serializable;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private int id;
+    @Column(nullable = false, length = 10, updatable = false)
+    private String cedula;
 
     @Column(nullable = false, length = 50, unique = true)
     private String email;
