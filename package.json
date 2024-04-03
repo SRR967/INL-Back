@@ -1,0 +1,19 @@
+{
+  "name": "inl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SRR967/INL-Back.git"
+  },
+  "author": "Marlon Espinosa, Juan Gallego, Santiago Ramon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SRR967/INL-Back/issues"
+  },
+  "homepage": "https://github.com/SRR967/INL-Back#readme"
+}
