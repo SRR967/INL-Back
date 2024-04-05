@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class SolicitudServiceImpl implements SolicitudService {
 
-    @Autowired
+    //@Autowired
     private SolicitudRepo solicitudRepository;
 
     @Override

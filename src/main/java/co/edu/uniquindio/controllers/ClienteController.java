@@ -26,7 +26,7 @@ public class ClienteController {
     }
 
     @GetMapping
-    public List<ClienteDTO> getAllClientes() {
+    public List<ClienteDTO> getAllClientes() {git 
         return clienteService.getAllClientes();
     }
 
