@@ -16,27 +16,27 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @PostMapping
-    public ClienteDTO saveCliente(@RequestBody ClienteDTO clienteDto) {
+    public ClienteDTO saveCliente(@RequestBody ClienteDTO clienteDto) throws Exception {
         return clienteService.saveCliente(clienteDto);
     }
 
     @GetMapping("/{cedula}")
-    public ClienteDTO getClienteById(@PathVariable String cedula) {
+    public ClienteDTO getClienteById(@PathVariable String cedula) throws Exception {
         return clienteService.getClienteById(cedula);
     }
 
     @GetMapping
-    public List<ClienteDTO> getAllClientes() {
+    public List<ClienteDTO> getAllClientes() throws Exception {
         return clienteService.getAllClientes();
     }
 
     @PutMapping
-    public ClienteDTO updateCliente(@RequestBody ClienteDTO clienteDto) {
+    public ClienteDTO updateCliente(@RequestBody ClienteDTO clienteDto) throws Exception {
         return clienteService.updateCliente(clienteDto);
     }
 
     @DeleteMapping("/{cedula}")
-    public void deleteCliente(@PathVariable String cedula) {
+    public void deleteCliente(@PathVariable String cedula) throws Exception {
         clienteService.deleteCliente(cedula);
     }
 }

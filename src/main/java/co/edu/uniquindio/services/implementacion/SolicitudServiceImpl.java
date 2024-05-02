@@ -1,26 +1,34 @@
 package co.edu.uniquindio.services.implementacion;
 
+import co.edu.uniquindio.model.entities.Cliente;
 import co.edu.uniquindio.model.entities.Solicitud;
 import co.edu.uniquindio.model.dto.SolicitudDTO;
+import co.edu.uniquindio.model.enums.Estado;
+import co.edu.uniquindio.repositories.ClienteRepo;
 import co.edu.uniquindio.repositories.SolicitudRepo;
 import co.edu.uniquindio.services.interfaces.SolicitudService;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class SolicitudServiceImpl implements SolicitudService {
 
-    @Autowired
-    private SolicitudRepo solicitudRepository;
+    private final SolicitudRepo solicitudRepository;
 
     @Override
-    public SolicitudDTO saveSolicitud(SolicitudDTO solicitudDto) {
+    public SolicitudDTO saveSolicitud(SolicitudDTO solicitudDto){
         Solicitud solicitud = new Solicitud();
-        // Aquí copiar los campos de solicitudDto a solicitud
-        solicitud = solicitudRepository.save(solicitud);
+
+        solicitud= solicitudRepository.save(solicitud);
         return convertToDto(solicitud);
     }
 
@@ -50,7 +58,7 @@ public class SolicitudServiceImpl implements SolicitudService {
     }
 
     private SolicitudDTO convertToDto(Solicitud solicitud) {
-        SolicitudDTO solicitudDto = new SolicitudDTO(solicitud.getId_solicitud(), solicitud.getFecha(), solicitud.getDescripcion(), solicitud.getDetalle(), solicitud.getCliente().getCedula(), solicitud.getProyecto().getIdProyecto(), solicitud.getEstadoSolicitud());
+        SolicitudDTO solicitudDto = new SolicitudDTO(solicitud.getId_solicitud(), solicitud.getFecha(), solicitud.getDescripcion(),solicitud.getDetalle(),solicitud.getCliente().getCedula());
         // Aquí copiar los campos de solicitud a solicitudDto
         return solicitudDto;
     }

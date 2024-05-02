@@ -1,3 +1,3 @@
 package co.edu.uniquindio.model.dto;
 
-public record ClienteDTO(String cedula, String nombre, String apellido, String telefono) {}
+public record ClienteDTO(String cedula, String nombre, String apellido, String telefono, String correo, String contrasena) {}
