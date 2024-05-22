@@ -31,7 +31,7 @@ public class Solicitud implements Serializable {
     @ManyToOne
     private Cliente cliente;
 
-    @OneToOne
+    @OneToOne(mappedBy = "idSolicitud")
     private Proyecto proyecto;
 
     @OneToOne(mappedBy = "solicitud")
