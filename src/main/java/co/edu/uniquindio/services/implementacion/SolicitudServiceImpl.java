@@ -25,7 +25,7 @@ public class SolicitudServiceImpl implements SolicitudService {
     private final SolicitudRepo solicitudRepository;
 
     @Override
-    public SolicitudDTO saveSolicitud(SolicitudDTO solicitudDto){
+    public SolicitudDTO saveSolicitud(SolicitudDTO solicitudDto)throws Exception{
         Solicitud solicitud = new Solicitud();
 
         solicitud= solicitudRepository.save(solicitud);

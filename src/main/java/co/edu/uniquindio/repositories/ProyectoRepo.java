@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface ProyectoRepo extends JpaRepository<Proyecto, Integer> {
-    List<Proyecto> findByIdSolicitudCliente(Cliente cliente);
-    Proyecto findByIdSolicitud(int idSolicitud);
+    List<Proyecto> findByIdSolicitud_Cliente_Cedula(String codigo);
+   //Proyecto findByIdSolicitud_Id_solicitud(int idSolicitud);
     Proyecto findByIdProyecto(int idProyecto);
 }

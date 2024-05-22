@@ -52,7 +52,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ClienteDTO saveCliente(ClienteDTO clienteDto) throws Exception {
+    public String saveCliente(ClienteDTO clienteDto) throws Exception {
 
         if (estaRepetidoCedula(clienteDto.cedula())){
             throw new Exception("La cedula "+clienteDto.cedula()+" ya se encuentra registrada");
@@ -69,7 +69,7 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setContrasena(clienteDto.contrasena());
 
         cliente = clienteRepository.save(cliente);
-        return convertToDto(cliente);
+        return cliente.getCedula();
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ClienteDTO updateCliente(ClienteDTO clienteDto) throws Exception {
+    public String updateCliente(ClienteDTO clienteDto) throws Exception {
         Cliente cliente = new Cliente();
 
         if (estaRepetidoCorreo(clienteDto.correo(), clienteDto.cedula())){
@@ -94,7 +94,7 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setEmail(clienteDto.correo());
         cliente.setTelefono(clienteDto.telefono());
         cliente = clienteRepository.save(cliente);
-        return convertToDto(cliente);
+        return cliente.getCedula();
     }
 
     @Override
@@ -125,7 +125,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<ListaProyectosDTO> getProyectosByCliente(String cedula) throws Exception {
         Cliente cliente = verificarCliente(cedula);
-        List<Proyecto> listaProyectos = proyectoRepository.findByIdSolicitudCliente(cliente);
+        List<Proyecto> listaProyectos = proyectoRepository.findByIdSolicitud_Cliente_Cedula(cliente.getCedula());
         if (listaProyectos.isEmpty()){
             throw new Exception("No hay proyectos asociados a la cedula:"+cedula);
         }
@@ -142,7 +142,8 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ProyectoDTO getProyecto(int codigoSolicitud) throws Exception {
-        Proyecto proyecto = proyectoRepository.findByIdSolicitud(codigoSolicitud);
+        //Proyecto proyecto = proyectoRepository.findByIdSolicitud_Id_solicitud(codigoSolicitud);
+        Proyecto proyecto= null;
         if (proyecto ==null){
             throw new Exception("Error al buscar el proyecto con el codigo de solicitud "+codigoSolicitud);
         }
