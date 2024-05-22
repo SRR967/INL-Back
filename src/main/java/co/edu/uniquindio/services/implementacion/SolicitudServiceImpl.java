@@ -22,7 +22,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class SolicitudServiceImpl implements SolicitudService {
 
+
     private final SolicitudRepo solicitudRepository;
+
 
     @Override
     public SolicitudDTO saveSolicitud(SolicitudDTO solicitudDto)throws Exception{

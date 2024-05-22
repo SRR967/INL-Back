@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class DocumentoServiceImpl implements DocumentoService {
 
-    @Autowired
+    //@Autowired
     private DocumentoRepo documentoRepository;
 
     @Override

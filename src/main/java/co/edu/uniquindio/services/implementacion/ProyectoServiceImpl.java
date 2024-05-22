@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class ProyectoServiceImpl implements ProyectoService {
 
-    @Autowired
+    //@Autowired
     private ProyectoRepo proyectoRepository;
 
     @Override
