@@ -6,4 +6,6 @@ import co.edu.uniquindio.model.dto.TokenDTO;
 public interface AutenticacionService {
     TokenDTO login (LoginDTO loginDTO) throws Exception;
 
+    TokenDTO refreshToken (TokenDTO tokenDTO) throws Exception;
+
 }

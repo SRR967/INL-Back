@@ -38,7 +38,27 @@ public class AuntenticacionServiceImpl implements AutenticacionService {
         if( !passwordEncoder.matches(loginDTO.contrasena(), usuario.getContrasena()) ){
             throw new Exception("La contraseña ingresada es incorrecta");
         }
-        return new TokenDTO(createToken(usuario));
+
+        String token = createToken(usuario);
+        String refreshToken = createRefreshToken(usuario.getEmail());
+        return new TokenDTO(token, refreshToken);
+    }
+
+    @Override
+    public TokenDTO refreshToken(TokenDTO tokenDTO) throws Exception{
+        try {
+            String email = jwtUtils.parseJwt(tokenDTO.refreshToken()).getBody().getSubject();
+            Optional<Usuario> cuentaOptional = Optional.ofNullable(usuarioRepo.findByEmail(email));
+            if (cuentaOptional.isEmpty()) {
+                throw new Exception("No existe el correo ingresado");
+            }
+            Usuario cuenta = cuentaOptional.get();
+
+            String jwtToken = createToken(cuenta);
+            return new TokenDTO(jwtToken, tokenDTO.refreshToken());
+        } catch (Exception e) {
+            throw new Exception("El token de refresco no es valido");
+        }
     }
 
     private String createToken(Usuario usuario){
@@ -61,5 +81,11 @@ public class AuntenticacionServiceImpl implements AutenticacionService {
         map.put("id", usuario.getCedula());
 
         return jwtUtils.generarToken(usuario.getEmail(), map);
+    }
+
+    private String createRefreshToken(String email) {
+        // Genera un token de refresco con una duración mayor que el token normal
+        Map<String, Object> claims = new HashMap<>();
+        return jwtUtils.generarToken(email, claims);
     }
 }
