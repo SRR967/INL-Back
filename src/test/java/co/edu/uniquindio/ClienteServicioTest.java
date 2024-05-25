@@ -1,4 +1,4 @@
-package co.uniquindio.proyectoInl.test;
+package co.edu.uniquindio;
 
 import co.edu.uniquindio.model.dto.ClienteDTO;
 import co.edu.uniquindio.services.interfaces.ClienteService;
@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-@SpringBootTest
 @Transactional
+@SpringBootTest
 public class ClienteServicioTest {
-    /*
+
+    @Autowired
     private ClienteService clienteService;
 
     @Test
@@ -27,6 +28,6 @@ public class ClienteServicioTest {
         String cedula =clienteService.saveCliente(cliente);
         Assertions.assertEquals("123456789",cedula);
     }
-
-     */
 }
+
+

@@ -4,6 +4,7 @@ import co.edu.uniquindio.model.entities.Proyecto;
 import co.edu.uniquindio.model.dto.ProyectoDTO;
 import co.edu.uniquindio.repositories.ProyectoRepo;
 import co.edu.uniquindio.services.interfaces.ProyectoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ProyectoServiceImpl implements ProyectoService {
 
     //@Autowired
-    private ProyectoRepo proyectoRepository;
+    private final ProyectoRepo proyectoRepository;
 
     @Override
     public ProyectoDTO saveProyecto(ProyectoDTO proyectoDto) {
