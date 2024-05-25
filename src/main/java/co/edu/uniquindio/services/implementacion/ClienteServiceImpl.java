@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,7 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class ClienteServiceImpl implements ClienteService {
+
 
 
     private final ClienteRepo clienteRepository;
@@ -48,6 +50,7 @@ public class ClienteServiceImpl implements ClienteService {
         }
         return cliente;
     }
+
 
     @Override
     public String saveCliente(ClienteDTO clienteDto) throws Exception {
@@ -80,10 +83,16 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteDTO> getAllClientes() {
-        List<Cliente> clientes = clienteRepository.findAll();
-        return clientes.stream().map(this::convertToDto).collect(Collectors.toList());
-    }
+public List<ClienteDTO> getAllClientes() {
+    List<ClienteDTO> clientes = new ArrayList<>();
+
+    // Agrega los datos quemados
+    clientes.add(new ClienteDTO("123", "Juan", "Perez", "1234567890"));
+    clientes.add(new ClienteDTO("456", "Maria", "Rodriguez", "0987654321"));
+    // Agrega más clientes si lo deseas...
+
+    return clientes;
+}
 
     @Override
     public String updateCliente(ClienteDTO clienteDto) throws Exception {
