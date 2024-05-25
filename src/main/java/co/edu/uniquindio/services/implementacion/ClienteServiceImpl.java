@@ -13,14 +13,12 @@ import co.edu.uniquindio.repositories.ProyectoRepo;
 import co.edu.uniquindio.repositories.SolicitudRepo;
 import co.edu.uniquindio.services.interfaces.ClienteService;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.apache.bcel.generic.InstructionConstants;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.ReactiveTransaction;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -66,7 +64,10 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setApellido(clienteDto.apellido());
         cliente.setTelefono(clienteDto.telefono());
         cliente.setEmail(clienteDto.correo());
-        cliente.setContrasena(clienteDto.contrasena());
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String passwordEncriptada = passwordEncoder.encode(clienteDto.contrasena());
+        cliente.setContrasena(passwordEncriptada);
 
         cliente = clienteRepository.save(cliente);
         return cliente.getCedula();
