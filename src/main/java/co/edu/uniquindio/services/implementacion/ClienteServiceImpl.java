@@ -81,9 +81,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-public List<ClienteDTO> getAllClientes() {
+    public List<ClienteDTO> getAllClientes() {
     List<ClienteDTO> clientes = new ArrayList<>();
-
 
     return clientes;
 }

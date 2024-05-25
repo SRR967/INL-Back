@@ -41,4 +41,22 @@ public class JWTUtils {
                 SignatureAlgorithm.HS256.getJcaName());
     }
 
+    public String refreshToken(String token) throws ExpiredJwtException,
+            UnsupportedJwtException, MalformedJwtException, IllegalArgumentException {
+        // Parse the existing token
+        Jws<Claims> claimsJws = parseJwt(token);
+        Claims claims = claimsJws.getBody();
+
+        // Generate a new token with the same claims but a new expiration time
+        Instant now = Instant.now();
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(claims.getSubject())
+                .setIssuedAt(Date.from(now))
+                .setExpiration(Date.from(now.plus(5L, ChronoUnit.MINUTES)))
+                .signWith(getKey())
+                .compact();
+    }
+
+
 }
