@@ -86,10 +86,6 @@ public class ClienteServiceImpl implements ClienteService {
 public List<ClienteDTO> getAllClientes() {
     List<ClienteDTO> clientes = new ArrayList<>();
 
-    // Agrega los datos quemados
-    clientes.add(new ClienteDTO("123", "Juan", "Perez", "1234567890"));
-    clientes.add(new ClienteDTO("456", "Maria", "Rodriguez", "0987654321"));
-    // Agrega más clientes si lo deseas...
 
     return clientes;
 }
