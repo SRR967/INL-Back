@@ -1,10 +1,7 @@
 package co.edu.uniquindio.services.implementacion;
 
-import co.edu.uniquindio.model.dto.ListaProyectosDTO;
-import co.edu.uniquindio.model.dto.ProyectoDTO;
-import co.edu.uniquindio.model.dto.SolicitudDTO;
+import co.edu.uniquindio.model.dto.*;
 import co.edu.uniquindio.model.entities.Cliente;
-import co.edu.uniquindio.model.dto.ClienteDTO;
 import co.edu.uniquindio.model.entities.Proyecto;
 import co.edu.uniquindio.model.entities.Solicitud;
 import co.edu.uniquindio.model.enums.Estado;
@@ -75,20 +72,19 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ClienteDTO getClienteById(String cedula) throws Exception {
+    public InformacionClienteDTO getClienteById(String cedula) throws Exception {
         Cliente cliente = verificarCliente(cedula);
         return convertToDto(cliente);
     }
 
     @Override
-    public List<ClienteDTO> getAllClientes() {
-    List<ClienteDTO> clientes = new ArrayList<>();
-
+    public List<InformacionClienteDTO> getAllClientes() throws Exception {
+    List<InformacionClienteDTO> clientes = new ArrayList<>();
     return clientes;
 }
 
     @Override
-    public String updateCliente(ClienteDTO clienteDto) throws Exception {
+    public String updateCliente(InformacionClienteDTO clienteDto) throws Exception {
         Cliente cliente = new Cliente();
 
         if (estaRepetidoCorreo(clienteDto.correo(), clienteDto.cedula())){
@@ -169,9 +165,9 @@ public class ClienteServiceImpl implements ClienteService {
         return proyecto.getIdProyecto();
     }
 
-    private ClienteDTO convertToDto(Cliente cliente) {
-        ClienteDTO clienteDto = new ClienteDTO(cliente.getCedula(), cliente.getNombre(),
-                cliente.getApellido(), cliente.getTelefono(), cliente.getEmail(), cliente.getContrasena());
+    private InformacionClienteDTO convertToDto(Cliente cliente) {
+        InformacionClienteDTO clienteDto = new InformacionClienteDTO(cliente.getCedula(), cliente.getNombre(),
+                cliente.getApellido(), cliente.getTelefono(), cliente.getEmail());
         // Aquí copiar los campos de cliente a clienteDto
         return clienteDto;
     }
