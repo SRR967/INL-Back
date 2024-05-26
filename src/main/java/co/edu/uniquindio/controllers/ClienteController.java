@@ -24,8 +24,9 @@ public class ClienteController {
     }
 
     @PostMapping("/crear-solicitud")
-    public ResponseEntity<MensajeDTO<Integer>> saveSolicitud (@RequestBody SolicitudDTO solicitudDTO) throws Exception {
-        return ResponseEntity.ok().body(new MensajeDTO<>(false,clienteService.saveSolicitud(solicitudDTO)));
+    public ResponseEntity<MensajeDTO<String>> saveSolicitud (@RequestBody SolicitudDTO solicitudDTO) throws Exception {
+        clienteService.saveSolicitud(solicitudDTO);
+        return ResponseEntity.ok().body(new MensajeDTO<>(false,"Solicitud creada correctamente"));
     }
 
     @GetMapping("/solicitudes/{cedula}")
