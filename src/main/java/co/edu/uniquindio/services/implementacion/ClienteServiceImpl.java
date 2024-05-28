@@ -141,8 +141,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ProyectoDTO getProyecto(int codigoSolicitud) throws Exception {
-        //Proyecto proyecto = proyectoRepository.findByIdSolicitud_Id_solicitud(codigoSolicitud);
-        Proyecto proyecto= null;
+        Proyecto proyecto = proyectoRepository.findByIdSolicitud(codigoSolicitud);
         if (proyecto ==null){
             throw new Exception("Error al buscar el proyecto con el codigo de solicitud "+codigoSolicitud);
         }
