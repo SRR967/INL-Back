@@ -27,8 +27,10 @@ public class ClienteController {
 
     @PostMapping("/crear-solicitud")
     public ResponseEntity<MensajeDTO<String>> saveSolicitud (@RequestBody SolicitudDTO solicitudDTO) throws Exception {
+        System.out.println("solicitud");
         clienteService.saveSolicitud(solicitudDTO);
-        emailService.sendSimpleMessage(clienteService.getClienteById(solicitudDTO.clienteCedula()).correo(),"Solicitud creada","Su solicitud ha sido creada correctamente");
+        //emailService.sendSimpleMessage(clienteService.getClienteById(solicitudDTO.clienteCedula()).correo(),"Solicitud creada","Su solicitud ha sido creada correctamente");
+        emailService.sendSimpleMessage("marlons.espinosaj@gmail.com","Solicitud creada","Su solicitud ha sido creada correctamente");
         return ResponseEntity.ok().body(new MensajeDTO<>(false,"Solicitud creada correctamente"));
     }
 
