@@ -14,5 +14,5 @@ public interface ProyectoRepo extends JpaRepository<Proyecto, Integer> {
    //Proyecto findByIdSolicitud_Id_solicitud(int idSolicitud);
     Proyecto findByIdProyecto(int idProyecto);
 
-    Proyecto findByIdSolicitud(int idSolicitud);
+    Proyecto findByIdSolicitud_IdSolicitud(int idSolicitud);
 }

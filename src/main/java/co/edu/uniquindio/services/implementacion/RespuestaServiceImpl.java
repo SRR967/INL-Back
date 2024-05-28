@@ -24,7 +24,7 @@ public class RespuestaServiceImpl implements RespuestaService {
     private final EmpleadoRepo empleadoRepo;
     @Override
     public int save(RespuestaDTO respuestaDTO) throws Exception {
-        Solicitud solicitud = solicitudRepo.getSolicitudById_solicitud(respuestaDTO.solicitudId());
+        Solicitud solicitud = solicitudRepo.getSolicitudByIdSolicitud(respuestaDTO.solicitudId());
         Respuesta respuesta = new Respuesta();
         Empleado empleado = empleadoRepo.getEmpleadoByIdEmpleado(respuestaDTO.idEmpleado());
         if (empleado == null){

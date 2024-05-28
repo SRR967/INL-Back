@@ -13,5 +13,5 @@ import java.util.List;
 public interface SolicitudRepo extends JpaRepository<Solicitud, Integer>{
     List<Solicitud> getSolicitudByClienteAndEstadoSolicitudOrEstadoSolicitud(Cliente cliente, Estado estado,Estado estado1);
 
-    Solicitud getSolicitudById_solicitud(int idSolicitud);
+    Solicitud getSolicitudByIdSolicitud(int idSolicitud);
 }

@@ -2,6 +2,7 @@
 package co.edu.uniquindio.controllers;
 
 import co.edu.uniquindio.model.dto.*;
+import co.edu.uniquindio.services.implementacion.EmailService;
 import co.edu.uniquindio.services.interfaces.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.bridge.Message;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ClienteController {
 
     private final ClienteService clienteService;
+    private final EmailService emailService;
 
     @GetMapping("/{cedula}")
     public ResponseEntity<MensajeDTO<InformacionClienteDTO>> getClienteById(@PathVariable String cedula) throws Exception {
@@ -26,6 +28,7 @@ public class ClienteController {
     @PostMapping("/crear-solicitud")
     public ResponseEntity<MensajeDTO<String>> saveSolicitud (@RequestBody SolicitudDTO solicitudDTO) throws Exception {
         clienteService.saveSolicitud(solicitudDTO);
+        emailService.sendSimpleMessage(clienteService.getClienteById(solicitudDTO.clienteCedula()).correo(),"Solicitud creada","Su solicitud ha sido creada correctamente");
         return ResponseEntity.ok().body(new MensajeDTO<>(false,"Solicitud creada correctamente"));
     }
 

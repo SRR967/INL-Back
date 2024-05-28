@@ -17,7 +17,7 @@ public class Solicitud implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_solicitud;
+    private int idSolicitud;
 
     @Column(nullable = false)
     private LocalDate fecha;
