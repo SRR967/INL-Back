@@ -3,14 +3,15 @@ package co.edu.uniquindio.controllers;
 
 import co.edu.uniquindio.model.dto.*;
 import co.edu.uniquindio.services.implementacion.EmailService;
+import co.edu.uniquindio.services.interfaces.ChatBotService;
 import co.edu.uniquindio.services.interfaces.ClienteService;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.bridge.Message;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +20,7 @@ public class ClienteController {
 
     private final ClienteService clienteService;
     private final EmailService emailService;
+    private final ChatBotService chatBotService;
 
     @GetMapping("/{cedula}")
     public ResponseEntity<MensajeDTO<InformacionClienteDTO>> getClienteById(@PathVariable String cedula) throws Exception {
@@ -29,8 +31,8 @@ public class ClienteController {
     public ResponseEntity<MensajeDTO<String>> saveSolicitud (@RequestBody SolicitudDTO solicitudDTO) throws Exception {
         System.out.println("solicitud");
         clienteService.saveSolicitud(solicitudDTO);
-        //emailService.sendSimpleMessage(clienteService.getClienteById(solicitudDTO.clienteCedula()).correo(),"Solicitud creada","Su solicitud ha sido creada correctamente");
-        emailService.sendSimpleMessage("marlons.espinosaj@gmail.com","Solicitud creada","Su solicitud ha sido creada correctamente");
+        emailService.sendSimpleMessage(clienteService.getClienteById(solicitudDTO.clienteCedula()).correo(),"Solicitud creada","Su solicitud ha sido creada correctamente");
+        //emailService.sendSimpleMessage("marlons.espinosaj@gmail.com","Solicitud creada","Su solicitud ha sido creada correctamente");
         return ResponseEntity.ok().body(new MensajeDTO<>(false,"Solicitud creada correctamente"));
     }
 
@@ -49,8 +51,21 @@ public class ClienteController {
         return ResponseEntity.ok().body(new MensajeDTO<>(false, clienteService.updateProyecto(proyectoDTO)));
     }
 
+    @GetMapping("/chatbot")
+    public String chatbotWelcome() {
+        return "Hola! Soy tu chatbot. ¿Cómo te puedo ayudar hoy?";
+    }
 
-
+    @PostMapping("/chatbot")
+    public String chatbotMessage(@RequestBody Map<String, String> request) {
+        String message = request.get("message");
+        try {
+            return chatBotService.getResponse(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Lo siento, hubo un problema al procesar tu solicitud.";
+        }
+    }
 
     @GetMapping()
     public List<InformacionClienteDTO> getAllClientes() throws Exception {
