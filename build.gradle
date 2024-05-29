@@ -54,4 +54,5 @@ test {
 
 bootJar {
     archiveFileName = 'inl.jar'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
