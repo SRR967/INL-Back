@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmpleadoRepo extends JpaRepository<Empleado, String> {
 
-    Empleado getEmpleadoByCedula(String idEmpleado);
+    Empleado getEmpleadoByIdEmpleado(String idEmpleado);
 }
