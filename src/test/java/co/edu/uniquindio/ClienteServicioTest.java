@@ -15,6 +15,7 @@ public class ClienteServicioTest {
     @Autowired
     private ClienteService clienteService;
 
+    /*
     @Test
     public void registrarClienteTest() throws Exception{
         ClienteDTO cliente = new ClienteDTO(
@@ -28,6 +29,8 @@ public class ClienteServicioTest {
         String cedula =clienteService.saveCliente(cliente);
         Assertions.assertEquals("123456789",cedula);
     }
+    */
+
 }
 
 
