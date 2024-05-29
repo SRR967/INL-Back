@@ -52,7 +52,7 @@ public class ProyectoServiceImpl implements ProyectoService {
     }
 
     private ProyectoDTO convertToDto(Proyecto proyecto) {
-        ProyectoDTO proyectoDto = new ProyectoDTO(proyecto.getIdProyecto(), proyecto.getNombre(), proyecto.getDescripcion(), proyecto.getFechaInicio(), proyecto.getFechaFin(), proyecto.getEstadoProyecto(), proyecto.getIdSolicitud().getId_solicitud(),proyecto.getEmpleado().getIdEmpleado());
+        ProyectoDTO proyectoDto = new ProyectoDTO(proyecto.getIdProyecto(), proyecto.getNombre(), proyecto.getDescripcion(), proyecto.getFechaInicio(), proyecto.getFechaFin(), proyecto.getEstadoProyecto(), proyecto.getIdSolicitud().getIdSolicitud(),proyecto.getEmpleado().getIdEmpleado());
         // Aquí copiar los campos de proyecto a proyectoDto
         return proyectoDto;
     }

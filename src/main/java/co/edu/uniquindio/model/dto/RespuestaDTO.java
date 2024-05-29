@@ -1,3 +1,5 @@
 package co.edu.uniquindio.model.dto;
 
-public record RespuestaDTO(int idRespuesta, String contenido, int solicitudId, int idEmpleado) {}
+import co.edu.uniquindio.model.enums.Estado;
+
+public record RespuestaDTO(int idRespuesta, String contenido, int solicitudId, String idEmpleado) {}

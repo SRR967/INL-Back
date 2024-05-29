@@ -68,13 +68,13 @@ public class SolicitudServiceImpl implements SolicitudService {
     }
 
     private SolicitudDTO convertToDto(Solicitud solicitud) {
-        SolicitudDTO solicitudDto = new SolicitudDTO(solicitud.getId_solicitud(), solicitud.getFecha(), solicitud.getDescripcion(),solicitud.getDetalle(),solicitud.getCliente().getCedula());
+        SolicitudDTO solicitudDto = new SolicitudDTO(solicitud.getIdSolicitud(), solicitud.getFecha(), solicitud.getDescripcion(),solicitud.getDetalle(),solicitud.getCliente().getCedula());
         // Aquí copiar los campos de solicitud a solicitudDto
         return solicitudDto;
     }
 
     private ListaProyectosDTO convertListToDto(Solicitud solicitud){
-        ListaProyectosDTO solicitudDto = new ListaProyectosDTO(solicitud.getId_solicitud(), solicitud.getFecha(), solicitud.getDescripcion(), solicitud.getEstadoSolicitud());
+        ListaProyectosDTO solicitudDto = new ListaProyectosDTO(solicitud.getIdSolicitud(), solicitud.getFecha(), solicitud.getDescripcion(), solicitud.getEstadoSolicitud());
 
         return solicitudDto;
     }

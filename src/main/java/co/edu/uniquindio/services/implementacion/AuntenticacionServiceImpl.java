@@ -66,13 +66,13 @@ public class AuntenticacionServiceImpl implements AutenticacionService {
         String rol;
         String nombre;
         if( usuario instanceof Cliente){
-            rol = "cliente";
+            rol = "clientes";
             nombre = ((Cliente) usuario).getNombre();
         }else if( usuario instanceof Empleado){
-            rol = "empleado";
+            rol = "empleados";
             nombre = ((Empleado) usuario).getNombre();
         }else{
-            rol = "admin";
+            rol = "admins";
             nombre = "Administrador";
         }
         Map<String, Object> map = new HashMap<>();

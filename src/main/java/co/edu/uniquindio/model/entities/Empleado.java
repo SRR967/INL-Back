@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Empleado extends Usuario implements Serializable {
 
-    @Column(nullable = false, length = 10, updatable = false)
+    @Column(nullable = false, length = 10)
     private String idEmpleado;
 
     @Column(nullable = false, length = 50)

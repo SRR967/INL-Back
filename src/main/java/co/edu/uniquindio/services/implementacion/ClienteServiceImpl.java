@@ -118,7 +118,7 @@ public class ClienteServiceImpl implements ClienteService {
         solicitud.setEstadoSolicitud(Estado.ENPROCESO);
 
         solicitud= solicitudRepository.save(solicitud);
-        return solicitud.getId_solicitud();
+        return solicitud.getIdSolicitud();
     }
 
     @Override
@@ -141,13 +141,13 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ProyectoDTO getProyecto(int codigoSolicitud) throws Exception {
-        Proyecto proyecto = proyectoRepository.findByIdSolicitud(codigoSolicitud);
+        Proyecto proyecto = proyectoRepository.findByIdSolicitud_IdSolicitud(codigoSolicitud);
         if (proyecto ==null){
             throw new Exception("Error al buscar el proyecto con el codigo de solicitud "+codigoSolicitud);
         }
         return new ProyectoDTO(proyecto.getIdProyecto(), proyecto.getNombre(),
                 proyecto.getDescripcion(), proyecto.getFechaInicio(),proyecto.getFechaFin(),
-                proyecto.getEstadoProyecto(),proyecto.getIdSolicitud().getId_solicitud(),
+                proyecto.getEstadoProyecto(),proyecto.getIdSolicitud().getIdSolicitud(),
                 proyecto.getEmpleado().getNombre() + proyecto.getEmpleado().getApellido());
     }
 
