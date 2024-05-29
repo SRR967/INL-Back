@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: build/libs/INL-1.0-SNAPSHOT.jar
+          path: build/libs/INL-1.0-SNAPSHOT-plain.jar
 
   deploy:
     runs-on: ubuntu-latest
