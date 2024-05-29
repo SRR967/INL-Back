@@ -34,7 +34,7 @@ public class Proyecto implements Serializable {
     @Column(nullable = false)
     private Estado estadoProyecto;
 
-    @OneToOne(mappedBy = "proyecto")
+    @OneToOne
     private Solicitud idSolicitud;
 
     @OneToMany(mappedBy = "proyecto")

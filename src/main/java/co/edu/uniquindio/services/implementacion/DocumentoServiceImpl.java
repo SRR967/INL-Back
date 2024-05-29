@@ -4,17 +4,21 @@ import co.edu.uniquindio.model.entities.Documento;
 import co.edu.uniquindio.model.dto.DocumentoDTO;
 import co.edu.uniquindio.repositories.DocumentoRepo;
 import co.edu.uniquindio.services.interfaces.DocumentoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class DocumentoServiceImpl implements DocumentoService {
 
-    @Autowired
-    private DocumentoRepo documentoRepository;
+    //@Autowired
+    private final DocumentoRepo documentoRepository;
 
     @Override
     public DocumentoDTO saveDocumento(DocumentoDTO documentoDto) {

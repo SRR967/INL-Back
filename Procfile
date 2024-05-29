@@ -1,0 +1,1 @@
+web: java -jar INL-1.0-SNAPSHOT.jar

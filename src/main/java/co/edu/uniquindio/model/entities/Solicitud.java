@@ -17,7 +17,7 @@ public class Solicitud implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_solicitud;
+    private int idSolicitud;
 
     @Column(nullable = false)
     private LocalDate fecha;
@@ -31,7 +31,7 @@ public class Solicitud implements Serializable {
     @ManyToOne
     private Cliente cliente;
 
-    @OneToOne
+    @OneToOne(mappedBy = "idSolicitud")
     private Proyecto proyecto;
 
     @OneToOne(mappedBy = "solicitud")

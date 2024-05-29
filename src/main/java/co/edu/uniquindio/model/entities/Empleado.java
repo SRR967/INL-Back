@@ -13,9 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Empleado implements Serializable {
+public class Empleado extends Usuario implements Serializable {
 
-    @Id
     @Column(nullable = false, length = 10, updatable = false)
     private String idEmpleado;
 
